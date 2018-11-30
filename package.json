@@ -1,0 +1,38 @@
+{
+  "name": "erats-console-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "npx tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Riey/erats-console-web.git"
+  },
+  "keywords": [
+    "era",
+    "erats"
+  ],
+  "author": "Riey",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Riey/erats-console-web/issues"
+  },
+  "homepage": "https://github.com/Riey/erats-console-web#readme",
+  "dependencies": {
+    "await-timeout": "^0.3.0",
+    "erats": "^1.0.3"
+  },
+  "devDependencies": {
+    "typescript": "^3.2.1"
+  },
+  "files": [
+    "src",
+    "lib",
+    "examples",
+    "era.css",
+    "tsconfig.json"
+  ]
+}
