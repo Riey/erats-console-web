@@ -1,0 +1,6 @@
+/dist
+/lib
+/.cache
+/.idea
+/node_modules
+
