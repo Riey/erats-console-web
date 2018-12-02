@@ -1,5 +1,4 @@
 import {ConsoleLineAlignment, EraConsole, InputRequest, InputRequestType, InputResponse} from "erats";
-import { timeout, TimeoutError } from 'promise-timeout';
 import {timeoutPromise} from "./timeoutPromise";
 
 const INPUT_UPDATE_EVENT_NAME = "era-input-update";
@@ -18,11 +17,7 @@ export enum InputRoute {
 export type OnColorChanged = (string) => void;
 
 function consoleLineAlignmentToClassName (align: ConsoleLineAlignment) {
-    switch (align) {
-        case ConsoleLineAlignment.Left: return "era-line-left";
-        case ConsoleLineAlignment.Center: return "era-line-center";
-        case ConsoleLineAlignment.Right: return "era-line-right";
-    }
+    return `era-line-${align}`;
 }
 
 export class EraWebConsole implements EraConsole {
