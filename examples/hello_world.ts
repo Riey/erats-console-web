@@ -1,7 +1,8 @@
 import {EraWebConsole} from "../src";
-import {ConsoleLineAlignment} from "erats";
+import {ConsoleLineAlignment, InputRequestType} from "erats";
+import "babel-polyfill";
 
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
     const inputBtn = document.getElementById("era-input-btn");
 
     const console = new EraWebConsole(
@@ -22,4 +23,12 @@ window.addEventListener("load", () => {
     console.print("Hello, world!");
     console.setLineAlignment(ConsoleLineAlignment.Center);
     console.newLine();
+
+    const input = await console.wait({
+        type: InputRequestType.Int,
+        data: null,
+        expire: null,
+    });
+
+    console.printLine(`Input: ${input}`);
 });

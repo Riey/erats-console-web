@@ -1,11 +1,12 @@
 {
   "name": "erats-console-web",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "npx tsc"
+    "build": "npx tsc",
+    "sample": "npx parcel examples/hello_world.html"
   },
   "repository": {
     "type": "git",
@@ -22,16 +23,16 @@
   },
   "homepage": "https://github.com/Riey/erats-console-web#readme",
   "dependencies": {
-    "await-timeout": "^0.3.0",
     "erats": "^1.0.3"
   },
   "devDependencies": {
+    "babel-polyfill": "^6.26.0",
+    "parcel-bundler": "^1.10.3",
     "typescript": "^3.2.1"
   },
   "files": [
     "src",
     "lib",
-    "examples",
     "era.css",
     "tsconfig.json"
   ]

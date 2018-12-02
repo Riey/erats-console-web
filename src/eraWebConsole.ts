@@ -1,5 +1,6 @@
 import {ConsoleLineAlignment, EraConsole, InputRequest, InputRequestType, InputResponse} from "erats";
-import Timeout from "await-timeout";
+import { timeout, TimeoutError } from 'promise-timeout';
+import {timeoutPromise} from "./timeoutPromise";
 
 const INPUT_UPDATE_EVENT_NAME = "era-input-update";
 const WAIT_INTERVAL = 50;
@@ -215,7 +216,7 @@ export class EraWebConsole implements EraConsole {
     async wait(req: InputRequest): Promise<InputResponse> {
 
         while (this._inputReq != null) {
-            await Timeout.set(WAIT_INTERVAL * 2);
+            await timeoutPromise(WAIT_INTERVAL * 2);
         }
 
         this._inputReq = req;
@@ -226,7 +227,7 @@ export class EraWebConsole implements EraConsole {
                 return undefined;
             }
 
-            await Timeout.set(WAIT_INTERVAL);
+            await timeoutPromise(WAIT_INTERVAL);
         }
 
         this._inputReq = null;
