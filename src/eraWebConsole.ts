@@ -14,7 +14,7 @@ export enum InputRoute {
     EnterKey,
 }
 
-export type OnColorChanged = (string) => void;
+export type OnColorChanged = (color: string) => void;
 
 function consoleLineAlignmentToClassName (align: ConsoleLineAlignment) {
     return `era-line-${align}`;
@@ -22,25 +22,34 @@ function consoleLineAlignmentToClassName (align: ConsoleLineAlignment) {
 
 export class EraWebConsole implements EraConsole {
 
+    // @ts-ignore
     color: string;
+    // @ts-ignore
     bgColor: string;
+    // @ts-ignore
     hlColor: string;
 
+    // @ts-ignore
     fontFamily: string;
+    // @ts-ignore
     fontSize: string;
+    // @ts-ignore
     fontBold: boolean;
+    // @ts-ignore
     fontItalic: boolean;
+
     alignment: ConsoleLineAlignment;
 
 
     private readonly parent: HTMLElement;
+    // @ts-ignore
     private lastLine: HTMLDivElement;
 
     private _inputReq: InputRequest | null;
     private _inputRes: InputResponse | null;
     private readonly _inputElem: HTMLInputElement;
 
-    private readonly onSetHlColor: (string) => void;
+    private readonly onSetHlColor: (color: string) => void;
     private readonly onSetColor: OnColorChanged;
     private readonly onSetBgColor: OnColorChanged;
 
@@ -48,11 +57,13 @@ export class EraWebConsole implements EraConsole {
         this.alignment = ConsoleLineAlignment.Left;
         this.parent = parent;
         this._inputElem = inputElem;
+        this._inputReq = null;
+        this._inputRes = null;
 
         inputElem.addEventListener("keydown", e => {
             if (e.key === "Enter") {
                 this.sendInputByInputElem(InputRoute.EnterKey);
-            } else if (this._inputElem.value.length === this._inputReq.data) {
+            } else if (this._inputReq !== null && this._inputElem.value.length === this._inputReq.data) {
                 this.sendInputByInputElem(InputRoute.Normal);
             }
         });
@@ -146,7 +157,7 @@ export class EraWebConsole implements EraConsole {
         ret.addEventListener("mouseleave", mouseleave);
         ret.addEventListener("touchend", mouseleave);
 
-        this.parent.addEventListener(INPUT_UPDATE_EVENT_NAME, function inputUpdate () {
+        this.parent.addEventListener(INPUT_UPDATE_EVENT_NAME, function inputUpdate (this: HTMLElement) {
             ret.style.color = color;
             ret.removeEventListener("mouseenter", mouseenter);
             ret.removeEventListener("touchstart", mouseenter);
@@ -208,7 +219,7 @@ export class EraWebConsole implements EraConsole {
         this.newLine();
     }
 
-    async wait(req: InputRequest): Promise<InputResponse> {
+    async wait(req: InputRequest): Promise<InputResponse | undefined> {
 
         while (this._inputReq != null) {
             await timeoutPromise(WAIT_INTERVAL * 2);
@@ -246,7 +257,7 @@ export class EraWebConsole implements EraConsole {
         return this.alignment;
     }
 
-    setBgColor(color) {
+    setBgColor(color: string) {
         this.onSetBgColor(color);
         this.bgColor = color;
     }

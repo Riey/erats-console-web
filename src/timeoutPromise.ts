@@ -5,5 +5,6 @@ export async function timeoutPromise(ms: number): Promise<void> {
     });
 
     await promise;
+    // noinspection JSUnusedAssignment
     clearTimeout(timer);
 }
