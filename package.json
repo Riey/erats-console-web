@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/Riey/erats-console-web#readme",
   "dependencies": {
-    "erats": "^1.0.3"
+    "erats": "^1.0.4"
   },
   "devDependencies": {
     "babel-polyfill": "^6.26.0",

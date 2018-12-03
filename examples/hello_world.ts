@@ -1,19 +1,26 @@
-import {EraWebConsole} from "../src";
+import {EraWebConsole, InputRoute} from "../src";
 import {ConsoleLineAlignment, InputRequestType} from "erats";
 import "babel-polyfill";
 
+// @ts-ignore
 window.addEventListener("load", async () => {
     const inputBtn = document.getElementById("era-input-btn");
+    const inputElem = document.getElementById("era-input") as HTMLInputElement;
 
     const console = new EraWebConsole(
         document.getElementById("era-console"),
-        document.getElementById("era-input") as HTMLInputElement,
+        inputElem,
         c => {
             inputBtn.style.color = c;
+            inputElem.style.color = c;
         },
         c => {
             document.documentElement.style.backgroundColor = c;
         });
+
+    inputBtn.addEventListener("click", () => {
+       console.sendInputByInputElem(InputRoute.EnterKey);
+    });
 
     console.setBgColor("black");
     console.setColor("white");
