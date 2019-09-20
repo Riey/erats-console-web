@@ -7,7 +7,7 @@
   "scripts": {
     "build": "npm run build-ts",
     "sample": "npx parcel examples/hello_world.html",
-    "prepack": "npm run build-ts",
+    "preinstall": "npm run build-ts",
     "build-ts": "npx tsc"
   },
   "repository": {
