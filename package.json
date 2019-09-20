@@ -5,8 +5,10 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "npx tsc",
-    "sample": "npx parcel examples/hello_world.html"
+    "build": "npm run build-ts",
+    "sample": "npx parcel examples/hello_world.html",
+    "prepack": "npm run build-ts",
+    "build-ts": "npx tsc"
   },
   "repository": {
     "type": "git",
