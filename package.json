@@ -34,7 +34,8 @@
   },
   "files": [
     "src",
-    "lib",
-    "era.css"
+    "examples",
+    "era.css",
+    "tsconfig.json"
   ]
 }
