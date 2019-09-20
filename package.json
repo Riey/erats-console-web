@@ -1,6 +1,6 @@
 {
   "name": "erats-console-web",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -27,8 +27,8 @@
   },
   "devDependencies": {
     "babel-polyfill": "^6.26.0",
-    "parcel-bundler": "^1.10.3",
-    "typescript": "^3.2.1"
+    "parcel-bundler": "^1.12.3",
+    "typescript": "^3.6.3"
   },
   "files": [
     "src",
