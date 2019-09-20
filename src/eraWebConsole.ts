@@ -194,6 +194,7 @@ export class EraWebConsole implements EraConsole {
         this.lastLine = document.createElement("div");
         this.lastLine.className = consoleLineAlignmentToClassName(this.alignment);
         this.parent.appendChild(this.lastLine);
+        this.parent.scrollTo(0, this.parent.scrollHeight)
     }
 
     print(text: string) {
